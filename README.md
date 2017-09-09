@@ -1,7 +1,7 @@
 # Já Caguei Aqui
 Marque anonimamente no mapa onde já usou o banheiro e compartilhe com seus amigos
 
-Código-fonte do projeto aberto ao público para quem se interessar em dar continudade ao projeto
+Código-fonte do projeto desenvolvido em 2014 aberto ao público para quem se interessar em dar continudade ao projeto
 
 # Tecnologias utilizadas:
 C# 5<br />
