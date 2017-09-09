@@ -1,0 +1,12 @@
+﻿@model JaCagueiAqui.Models.SessaoTopCagadasView
+@using JaCagueiAqui.Helpers
+<div id="@Model.idDiv">
+    @using (Ajax.BeginForm(Model.nomeAction, new AjaxOptions() { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = Model.idDiv }))
+    {   
+        @Html.Partial("ListagemCagadas", Model.listaCagadas)
+
+        <div class="pager">            
+            @Html.PageLinks(Model.pagingInfo, i => Url.Action(Model.nomeAction, new { pagina = i }))
+        </div>
+    }
+</div>

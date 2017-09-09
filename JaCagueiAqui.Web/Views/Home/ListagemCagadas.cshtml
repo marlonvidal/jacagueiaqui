@@ -1,0 +1,34 @@
+﻿@model List<JaCagueiAqui.Model.Post>
+@if (Model.Count == 0)
+{
+    <p>
+        Merda, ainda não temos registros :(
+    </p>
+}
+else
+{
+    foreach (var item in Model)
+    {
+ 
+    <div class="row">
+        <h2>
+            <span style="font-style: italic">"@item.Comentario"</span> <span style="font-size: small">
+                - @item.Nome
+                @if (item.Onde != null && item.Onde != "")
+                {
+                    <text>em <b>@item.Onde</b></text> 
+                }
+            </span>
+        </h2>
+        <p style="float: right;">
+            <a title="Gostei" onclick="Gostei(this, @item.ID);">
+                <img src="Resources/like.png" alt="Gostei" />
+                <span>@item.Gostei</span> </a>&nbsp; <a title="Não Gostei" onclick="NaoGostei(this, @item.ID);">
+                    <img src="Resources/dislike.png" alt="Não gostei" />
+                    <span>@item.NaoGostei</span> </a><a title="Comentario" href="/Cagada/@item.ID">
+                        <img src="Resources/comentar.png" alt="Comentar" />
+                        <span>@item.NumeroComentarios</span> </a>
+        </p>
+    </div>   
+    }
+}

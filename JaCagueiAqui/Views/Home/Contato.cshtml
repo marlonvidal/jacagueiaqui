@@ -1,0 +1,28 @@
+﻿@model JaCagueiAqui.Model.Contato
+@Scripts.Render("~/bundles/jqueryval")
+<div class="jumbotron">
+    <div class="container">
+        <h1>
+            Contato
+        </h1>
+    </div>
+</div>
+@using (Html.BeginForm("SalvarContato", "Home", FormMethod.Post))
+{
+    <fieldset>
+        @*<legend>Contato</legend>*@
+        @Html.LabelFor(x => x.Nome)
+        @Html.EditorFor(x => x.Nome)
+        @Html.ValidationMessageFor(x => x.Nome)
+        <br />
+        @Html.LabelFor(x => x.Email)
+        @Html.EditorFor(x => x.Email)
+        @Html.ValidationMessageFor(x => x.Email)
+        <br />
+        @Html.LabelFor(x => x.Mensagem)
+        @Html.EditorFor(x => x.Mensagem)
+        @Html.ValidationMessageFor(x => x.Mensagem)
+        <br />
+        <input type="submit" class="btn btn-success" value="Enviar" />
+    </fieldset>
+}

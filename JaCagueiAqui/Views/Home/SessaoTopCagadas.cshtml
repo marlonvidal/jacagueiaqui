@@ -1,0 +1,43 @@
+﻿@model JaCagueiAqui.Models.SessaoTopCagadasView
+<div id="@Model.idDiv">
+    @using (Ajax.BeginForm(Model.nomeAction, new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = Model.idDiv }))
+    {   
+        @Html.Partial("ListagemCagadas", Model.listaCagadas)
+
+        <div>
+            @if (Model.paginaAnterior > 0)
+            {
+                <span style="float: left;">
+                    @Html.ActionLink("Anterior", Model.nomeAction, "Home", new { pagina = Model.paginaAnterior });
+                    <<</span>            
+            }
+            @if (Model.paginaSeguinte > 0)
+            {
+                <span style="float: right;">
+                    @Html.ActionLink("Próximo", Model.nomeAction, "Home", new { pagina = Model.paginaSeguinte });
+                    >></span>            
+            }
+            
+            @Html.
+            @*@Html.PageLinks(Model.PagingInfo,
+           i => Url.Action("List", new { page = i, category = Model.CurrentCategory })*@
+            
+            @*@for (int i = 1; i <= Model.totalPaginas; i++)
+            {
+                if (i == Model.paginaAtual)
+                {
+                <text>
+                    @(i)
+                </text>
+                }
+                else
+                {
+                <text>
+                    @Ajax.ActionLink(i.ToString(), Model.nomeAction, "Home", new { pagina = i },
+                    new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = Model.idDiv })
+                </text>
+                }
+            }*@
+        </div>
+    }
+</div>

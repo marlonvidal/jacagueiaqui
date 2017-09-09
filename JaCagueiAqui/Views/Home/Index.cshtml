@@ -1,0 +1,110 @@
+﻿@model List<JaCagueiAqui.Model.Comentario>
+@Styles.Render("~/Content/carousel")
+@Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+    $(document).ready(function () {
+        FuncoesPaginaIndex();
+    });    
+</script>
+@Html.Hidden("Url", Url.Action("ListarItens", "Home"))
+<div class="row">
+    <center>
+        <h2>
+            <span style="font-style: italic">"Vamos cagar o mundo"
+            <span style="font-size: xx-small">- Barlão</span></span>
+        </h2>
+    </center>
+    <br />
+    <input id="target" type="text" placeholder="Digite o endereço" class="form-control" />
+    <br />
+    <div id="map-canvas" style="width: 100%; height: 500px;">
+    </div>
+</div>
+<div class="row" style="margin-top: 15px;">
+    <div id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>
+                            "MELHOR REDE COLABORATIVA DE TODA A HISTÓRIA DA HUMANIDADE"
+                        </h1>
+                        <p>
+                            <a href="https://www.twitter.com/herintag" target="_blank">@@herintag</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>
+                            "Na era dos chek in, surge este primor de site"
+                        </h1>
+                        <p>
+                            <a href="https://www.twitter.com/andersoncruz78" target="_blank">@@andersoncruz78</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <<h1>
+                            "A internet foi criada com objetivo de chegarmos a esse momento da evolução tecnológica"
+                        </h1>
+                        <p>
+                            <a href="https://www.twitter.com/edmarks_" target="_blank">@@edmarks_</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<a class="left carousel-control" href="#myCarousel" title="Cagada anterior" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" title="Próxima cagada" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>*@
+    </div>
+    <!-- /.carousel -->
+</div>
+<div class="row">
+    <div class="fb-like" data-href="https://www.facebook.com/jacagueiaqui" data-width="The pixel width of the plugin"
+        data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="standard"
+        data-action="like" data-show-faces="true" data-send="false">
+    </div>
+    <span style="float: right;"><a href="https://twitter.com/share" class="twitter-share-button"
+        data-text="#segurabrasew #chupaconcorrencia" data-lang="pt" data-size="large"
+        data-hashtags="jacagueiaqui">Tweetar</a> </span>
+</div>
+<div class="row">
+    <br />
+    <br />
+    <div id="comentario">
+        @using (Ajax.BeginForm("SalvarComentario", new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "comentario", OnSuccess = "onSuccess" }))
+        {                
+            @Html.Partial("FormularioComentario", new JaCagueiAqui.Model.Comentario());
+        }
+    </div>
+</div>
+@if (Model != null && Model.Count > 0)
+{
+    <div class="row">
+        <br />
+        <br />
+        <div class="jumbotron">
+            <div class="container" style="text-align: center;">
+                <h1>
+                    Últimos Comentários
+                </h1>
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+            @Html.Partial("Comentario", item);
+        }
+    </div>
+}

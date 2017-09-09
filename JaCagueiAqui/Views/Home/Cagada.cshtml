@@ -1,0 +1,68 @@
+﻿@model JaCagueiAqui.Models.CagadaView
+@Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+    $(document).ready(function () {
+        FuncoesPaginaCagada();
+    });
+</script>
+@Html.HiddenFor(x => x.post.ID)
+@Html.HiddenFor(x => x.post.Lat)
+@Html.HiddenFor(x => x.post.Long)
+<div class="row">
+    <div id="map-canvas" style="width: 100%; height: 450px;">
+    </div>
+</div>
+<div class="jumbotron">
+    <div class="container">
+        @if (Model.post.Comentario.Length > 500)
+        {
+            <h3 style="font-style: italic">
+                "@Model.post.Comentario"
+            </h3>
+        }
+        else
+        {
+            <h1 style="font-style: italic">
+                "@Model.post.Comentario"
+            </h1>
+        }
+        <h6>
+            - @Model.post.Nome
+        </h6>
+    </div>
+</div>
+<div class="row">
+    <p style="float: right;">
+        <a title="Gostei" onclick="Gostei(this, @Model.post.ID);">
+            <img src="../Resources/like.png" alt="Gostei" />
+            <span>@Model.post.Gostei</span> </a>&nbsp; <a title="Não Gostei" onclick="NaoGostei(this, @Model.post.ID);">
+                <img src="../Resources/dislike.png" alt="Não gostei" />
+                <span>@Model.post.NaoGostei</span> </a>
+    </p>
+</div>
+<div class="row">
+    <div id="formulario">
+        @using (Ajax.BeginForm("SalvarComentarioCagada", new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "comentarios", OnSuccess = "final" }))
+        {                
+            @Html.Partial("FormularioComentarioCagada", new JaCagueiAqui.Model.ComentarioCagada() { PostId = Model.post.ID });
+        }
+    </div>
+</div>
+<div class="row">
+    <br />
+    <div id="comentarios">
+        @Html.Partial("ComentarioCagada", Model.comentariosCagada)
+    </div>
+</div>
+@*<div class="row">
+    <div class="fb-like" data-href="@Request.Url.ToString()"
+    data-width="The pixel width of the plugin" data-height="The pixel height of the plugin"
+    data-colorscheme="light" data-layout="standard" data-action="like" data-show-faces="true"
+    data-send="false">
+    </div>
+</div>
+<div align="center">
+    <div class="fb-comments" data-href="@Request.Url.ToString()" data-colorscheme="light" data-numposts="5" data-width="800">
+    </div>
+</div>
+*@

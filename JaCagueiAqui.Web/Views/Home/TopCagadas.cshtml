@@ -1,0 +1,23 @@
+﻿@model JaCagueiAqui.Models.TopCagadasView
+<div class="jumbotron">
+    <div class="container">
+        <h1>
+            Top Cagadas
+        </h1>
+        <p>
+            Confira aqui as cagadas mais comentadas e curtidas
+        </p>
+    </div>
+</div>
+<br />
+<br />
+<div id="topo" class="textoCentralizado">
+    <h1>
+        @Model.nomeSessao
+    </h1>
+</div>
+@Html.Partial("SessaoTopCagadas", Model.sessaoAtiva)
+<div class="textoCentralizado">
+    <span style="font-size: medium"><a onclick="moveTela('#topo');">Voltar ao topo</a>
+    </span>
+</div>

@@ -1,0 +1,20 @@
+﻿@model JaCagueiAqui.Model.Post
+<fieldset>
+    <legend>Nos dê mais detalhes sobre o seu feito</legend>
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(x => x.Lat)
+    @Html.HiddenFor(x => x.Long)
+    @Html.LabelFor(x => x.Nome)
+    @Html.EditorFor(x => x.Nome)
+    @Html.ValidationMessageFor(x => x.Nome)
+    <br />
+    @Html.LabelFor(x => x.Onde)
+    @Html.EditorFor(x => x.Onde)
+    @Html.ValidationMessageFor(x => x.Onde)
+    <br />
+    @Html.LabelFor(x => x.Comentario)
+    @Html.EditorFor(x => x.Comentario)
+    @Html.ValidationMessageFor(x => x.Comentario)
+    <br />
+    <input type="submit" class="btn btn-success" value="Enviar" />
+</fieldset>

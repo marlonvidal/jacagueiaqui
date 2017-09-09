@@ -1,0 +1,15 @@
+﻿@model JaCagueiAqui.Model.ComentarioCagada
+<fieldset>
+    <legend>Deixe o seu comentário!</legend>
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(x => x.PostId)
+    @Html.LabelFor(x => x.Nome)
+    @Html.EditorFor(x => x.Nome)
+    @Html.ValidationMessageFor(x => x.Nome)
+    <br />
+    @Html.LabelFor(x => x.Comentario)
+    @Html.EditorFor(x => x.Comentario)
+    @Html.ValidationMessageFor(x => x.Comentario)
+    <br />
+    <input type="submit" class="btn btn-success" value="Enviar" />    
+</fieldset>
